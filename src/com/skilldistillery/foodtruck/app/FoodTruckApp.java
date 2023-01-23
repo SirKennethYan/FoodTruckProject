@@ -86,7 +86,7 @@ public class FoodTruckApp {
 		}
 
 		if (Index != 0) {
-			System.out.println("Highest Rated: " + fleet[Index].getTruckName() + " - " + highestRating + " Stars!");
+			System.out.println("Highest Rated: " + fleet[Index].getTruckName() + " - " + highestRating + " Stars! ");
 		}
 
 	}// displayHighestRating_Bracket
@@ -110,7 +110,7 @@ public class FoodTruckApp {
 			System.out.println("......food");
 			getUserSelection();
 		} else {
-			System.err.print("Invalid selection. Please try again:");
+			System.err.print("Invalid selection. Please try again: ");
 			getUserSelection();
 		}
 
