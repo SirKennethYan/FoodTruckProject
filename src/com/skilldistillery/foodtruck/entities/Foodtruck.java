@@ -1,30 +1,27 @@
 package com.skilldistillery.foodtruck.entities;
 
 public class Foodtruck {
-//	define a FoodTruck class with fields for a unique numeric id 
-//	a name ("TacoRific", "Mediterranean Medic", etc.), 
-//	food type ("Tacos", "Falafel", etc.), and a numeric rating
+
 	private static int nextTruckId;
 	private int id = 0;
 	private String truckName;
 	private String foodType;
-	public int starRating;
-	
+	private int starRating;
+
 	public Foodtruck() {
-		
-	}//Foodtruck_Bracket
-	
+
+	}// Foodtruck_Bracket
+
 	public Foodtruck(String truckName, String foodType, int starRating) {
-//	create an and automatically assign the ID when we call this constructor.
+
 		this.truckName = truckName;
 		this.foodType = foodType;
 		this.starRating = starRating;
-	
+
 		nextTruckId++;
 		id = nextTruckId;
-		
-				
-	}//Foodtruck_Bracket
+
+	}// Foodtruck_Bracket
 
 	public static int getNextTruckId() {
 		return nextTruckId;
@@ -65,5 +62,11 @@ public class Foodtruck {
 	public void setStarRating(int starRating) {
 		this.starRating = starRating;
 	}
-	
-}//class_Bracket
+
+	@Override
+	public String toString() {
+		return "Truck Name: " + truckName + "\nId: " + id + "\nFood Type: " + foodType + "\nRating: " + starRating
+				+ "\n";
+	}
+
+}// class_Bracket

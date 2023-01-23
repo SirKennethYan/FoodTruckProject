@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.skilldistillery.foodtruck.entities.Foodtruck;
 
 public class FoodTruckApp {
-//	This main FoodTruck APP does NOT pass in the Id Value for any Food Truck.
 
 	private static int MAX_FOOD_TRUCKS = 5;
 	private Foodtruck[] fleet = new Foodtruck[MAX_FOOD_TRUCKS];
@@ -18,12 +17,14 @@ public class FoodTruckApp {
 		fta.displayTrucks();
 		fta.displayAverageRating();
 		fta.displayHighestRating();
+		fta.getUserSelection();
 
 	}// main_Bracket
 
 	public void createTrucks() {
 		for (int i = 0; i < MAX_FOOD_TRUCKS; i++) {
-			System.out.println("Enter a Food Truck name, or press Quit: ");
+			System.out.println("Enter a Food Truck name, or type 'Quit': ");
+
 			String truckName = userInput.nextLine();
 			if (truckName.equalsIgnoreCase("Quit")) {
 				break;
@@ -37,7 +38,7 @@ public class FoodTruckApp {
 			userInput.nextLine();
 
 			fleet[i] = new Foodtruck(truckName, foodType, starRating);
-//			done - assign this truck into the array at whatever index its at. 			
+
 		}
 
 	}// createTrucks_Bracket
@@ -46,9 +47,7 @@ public class FoodTruckApp {
 
 		for (Foodtruck truckName : fleet) {
 			if (truckName != null) {
-//		List all existing food trucks.
-				System.out.println("Truck Name: " + truckName.getTruckName());
-				System.out.println("Food Type: " + truckName.getFoodType());
+				System.out.println(truckName.toString());
 			}
 
 		}
@@ -66,24 +65,55 @@ public class FoodTruckApp {
 			}
 		}
 
-		double averageRating = (double) (totalRatings / count);
-		System.out.println("Average Rating: " + averageRating);
+		double averageRating = (double) totalRatings / count;
+		System.out.println("Average Ratings: " + averageRating);
 
 	}// displayAverageRating_Bracket
 
 	private void displayHighestRating() {
-		int highestRate = 0;
-		String trName = "";
+
+		int highestRating = 0;
+		int Index = 0;
 
 		for (int i = 0; i < fleet.length; i++) {
-			
-			highestRate = fleet[2].getStarRating();
-			trName = fleet[i].getTruckName();
-			System.out.println("Hihest Rated: " + highestRate + trName);
+			if (fleet[i] != null) {
+				int current = fleet[i].getStarRating();
+				if (current > highestRating) {
+					highestRating = current;
+					Index = i;
+				}
+			}
 		}
-		
 
+		if (Index != 0) {
+			System.out.println("Highest Rated: " + fleet[Index].getTruckName() + " - " + highestRating + " Stars!");
+		}
 
 	}// displayHighestRating_Bracket
+
+	private void getUserSelection() {
+		System.out.println("\nSelect a food truck below by its number, or enter '0' to quit: ");
+		for (int i = 0; i < fleet.length; i++) {
+			if (fleet[i] != null) {
+				System.out.println((i + 1) + ": " + fleet[i].getTruckName());
+			}
+		}
+		int userSelection = userInput.nextInt();
+		userInput.nextLine();
+		if (userSelection == 0) {
+			System.out.println("Goodbye: ");
+		} else if (userSelection > 0 && fleet[userSelection - 1] != null) {
+			System.out.println(fleet[userSelection - 1].getTruckName() + " Menu: ");
+			System.out.println("food......");
+			System.out.println("..food....");
+			System.out.println("....food..");
+			System.out.println("......food");
+			getUserSelection();
+		} else {
+			System.err.print("Invalid selection. Please try again:");
+			getUserSelection();
+		}
+
+	}// getUserSelection_Bracket
 
 }// class_Bracket
