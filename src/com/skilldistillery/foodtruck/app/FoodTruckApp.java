@@ -102,7 +102,7 @@ public class FoodTruckApp {
 		userInput.nextLine();
 		if (userSelection == 0) {
 			System.out.println("Goodbye: ");
-		} else if (userSelection > 0 && fleet[userSelection - 1] != null) {
+		} else if (userSelection > 0 && userSelection <= fleet.length && fleet[userSelection - 1] != null) {
 			System.out.println(fleet[userSelection - 1].getTruckName() + " Menu: ");
 			System.out.println("food......");
 			System.out.println("..food....");
