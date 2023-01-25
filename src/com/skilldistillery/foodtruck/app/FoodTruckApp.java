@@ -85,7 +85,7 @@ public class FoodTruckApp {
 			}
 		}
 
-		if (Index != 0) {
+		if (Index != -1) {
 			System.out.println("Highest Rated: " + fleet[Index].getTruckName() + " - " + highestRating + " Stars! ");
 		}
 
