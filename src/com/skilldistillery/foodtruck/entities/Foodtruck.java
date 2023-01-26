@@ -63,10 +63,15 @@ public class Foodtruck {
 		this.starRating = starRating;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Truck Name: " + truckName + "\nId: " + id + "\nFood Type: " + foodType + "\nRating: " + starRating
+//				+ "\n";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Truck Name: " + truckName + "\nId: " + id + "\nFood Type: " + foodType + "\nRating: " + starRating
-				+ "\n";
+		return "Truck Name: " + truckName + "\nId: " + id + "\nFood Type: " + foodType + "\n";
 	}
 
 }// class_Bracket

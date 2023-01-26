@@ -14,10 +14,7 @@ public class FoodTruckApp {
 		FoodTruckApp fta = new FoodTruckApp();
 
 		fta.createTrucks();
-		fta.displayTrucks();
-		fta.displayAverageRating();
-		fta.displayHighestRating();
-		fta.getUserSelection();
+		fta.getMenu();
 
 	}// main_Bracket
 
@@ -42,6 +39,43 @@ public class FoodTruckApp {
 		}
 
 	}// createTrucks_Bracket
+
+	private void getMenu() {
+		System.out.println("============The Food Truck App============");
+		System.out.println("==== 1. View all existing Food Trucks ====");
+		System.out.println("==== 2. View average Food Truck rating ===");
+		System.out.println("==== 3. View highest rated Food Trucks ===");
+		System.out.println("==== 4. Quit the Food Truck app ==========");
+		System.out.println("==========================================");
+
+		String menuOpt = userInput.nextLine();
+
+		if (menuOpt.equals("1")) {
+			displayTrucks();
+			getMenu();
+			userInput.nextLine();
+			
+		} else if (menuOpt.equals("2")) {
+			displayAverageRating();
+			getMenu();
+			userInput.nextLine();
+			
+		} else if (menuOpt.equals("3")) {
+			displayHighestRating();
+			getMenu();
+			userInput.nextLine();
+			
+		} else if (menuOpt.equals("4")) {
+			System.out.println("Goodbye! ");
+			
+		} else {
+			System.out.println("Invalid input. Please enter a number between 1 and 4.");
+			getMenu();
+
+			userInput.close();
+		}
+
+	}// getMenu_Bracket
 
 	private void displayTrucks() {
 
@@ -91,29 +125,29 @@ public class FoodTruckApp {
 
 	}// displayHighestRating_Bracket
 
-	private void getUserSelection() {
-		System.out.println("\nSelect a food truck below by its number, or enter '0' to quit: ");
-		for (int i = 0; i < fleet.length; i++) {
-			if (fleet[i] != null) {
-				System.out.println((i + 1) + ": " + fleet[i].getTruckName());
-			}
-		}
-		int userSelection = userInput.nextInt();
-		userInput.nextLine();
-		if (userSelection == 0) {
-			System.out.println("Goodbye: ");
-		} else if (userSelection > 0 && userSelection <= fleet.length && fleet[userSelection - 1] != null) {
-			System.out.println(fleet[userSelection - 1].getTruckName() + " Menu: ");
-			System.out.println("food......");
-			System.out.println("..food....");
-			System.out.println("....food..");
-			System.out.println("......food");
-			getUserSelection();
-		} else {
-			System.err.print("Invalid selection. Please try again: ");
-			getUserSelection();
-		}
+//	private void getUserSelection() {
+//		System.out.println("\nSelect a food truck below by its number, or enter '0' to quit: ");
+//		for (int i = 0; i < fleet.length; i++) {
+//			if (fleet[i] != null) {
+//				System.out.println((i + 1) + ": " + fleet[i].getTruckName());
+//			}
+//		}
+//		int userSelection = userInput.nextInt();
+//		userInput.nextLine();
+//		if (userSelection == 0) {
+//			System.out.println("Goodbye: ");
+//		} else if (userSelection > 0 && userSelection <= fleet.length && fleet[userSelection - 1] != null) {
+//			System.out.println(fleet[userSelection - 1].getTruckName() + " Menu: ");
+//			System.out.println("food......");
+//			System.out.println("..food....");
+//			System.out.println("....food..");
+//			System.out.println("......food");
+//			getUserSelection();
+//		} else {
+//			System.err.print("Invalid selection. Please try again: ");
+//			getUserSelection();
+//		}
 
-	}// getUserSelection_Bracket
+//	}// getUserSelection_Bracket
 
 }// class_Bracket
